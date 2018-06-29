@@ -51,6 +51,7 @@ public class FlowLayout extends ViewGroup {
     private int mMaxRows = DEFAULT_MAX_ROWS;
     private int mGravity = UNSPECIFIED_GRAVITY;
     private int mExactMeasuredHeight;
+    private int rowNum = 0;
 
     private List<Float> mHorizontalSpacingForRow = new ArrayList<>();
     private List<Integer> mHeightForRow = new ArrayList<>();
@@ -201,7 +202,7 @@ public class FlowLayout extends ViewGroup {
         }
 
         measuredHeight += getPaddingTop() + getPaddingBottom();
-        int rowNum = Math.min(mHorizontalSpacingForRow.size(), mMaxRows);
+        rowNum = Math.min(mHorizontalSpacingForRow.size(), mMaxRows);
         float rowSpacing = mRowSpacing == SPACING_AUTO && heightMode == MeasureSpec.UNSPECIFIED
                 ? 0 : mRowSpacing;
         if (rowSpacing == SPACING_AUTO) {
@@ -418,6 +419,15 @@ public class FlowLayout extends ViewGroup {
     public int getMaxRows() {
         return mMaxRows;
     }
+    
+     /**
+     * Returns the number of rows of the FlowLayout.
+     *
+     * @return The number of rows.
+     */
+    public int getRowNum() {
+        return rowNum;
+    }    
 
     /**
      * Sets the height of the FlowLayout to be at most maxRows tall.
